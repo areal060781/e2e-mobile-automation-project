@@ -1,3 +1,6 @@
 .idea
 .pytest_cache
 results
+conf/__pycache__
+pages/__pycache__
+tests/__pycache__
