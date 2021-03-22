@@ -18,7 +18,8 @@ def browser():
     driver.quit()
 
 
-def test_login_message_correctness(browser):
+def test_T53_login_message_correctness(browser, tm4j_r):
+    tm4j_r.comment = 'Fail test comment'
     login_activity = WelcomeScreen(browser)
     login_activity.click_login_button()
 
