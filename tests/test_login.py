@@ -18,7 +18,7 @@ def browser():
     driver.quit()
 
 
-def test_login_message_correctness(browser):
+def test_T53_login_with_correct_data(browser):
     login_activity = WelcomeScreen(browser)
     login_activity.click_login_button()
 
