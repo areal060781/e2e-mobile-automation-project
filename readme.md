@@ -15,7 +15,7 @@ pipenv shell
 ```
 
 ### Run testcase
-From project root, run:
+From project root, run with --tm4j or --tm4j-no-publish option:
 ```sh
 pytest
 ```
