@@ -11,7 +11,8 @@ from typing import Union
 import pytest
 from _pytest.config import Config
 from pytest_jsonreport.plugin import JSONReport
-from utils.zs4j_reporter_api.zs4j_api.zs4j_api import create_test_execution_result, create_test_cycle, configure_zs4j_api
+from utils.zs4j_reporter_api.zs4j_api.zs4j_api import create_test_execution_result, create_test_cycle, \
+    configure_zs4j_api
 
 
 class ZS4JReporter:
@@ -40,7 +41,7 @@ class ZS4JReporter:
         """
         mandatory_param_list = [
             'zs4j_project_prefix',
-            ]
+        ]
         if not self._config.option.zs4j_no_publish:
             mandatory_param_list.append('zs4j_api_key')
 
@@ -147,9 +148,9 @@ class ZS4JReporter:
 
         outcomes_zs4j_default = outcomes_base.copy()
         outcomes_zs4j_default.update({
-                'skipped': 'Not executed',
-                'xfailed': 'Pass',
-                'xpassed': 'Fail'})
+            'skipped': 'Not executed',
+            'xfailed': 'Pass',
+            'xpassed': 'Fail'})
 
         outcomes_pytest = outcomes_base.copy()
         outcomes_pytest.update({
@@ -175,10 +176,10 @@ class ZS4JReporter:
         Prepares the data for report
         Example output:
 
-        {'T303': {'name': 'one', 'outcome': 'Pass',
+        {'T303': {'name': 'one', 'outcome': 'Pass', 'duration': 9585.271425,
                   'steps': ['test one step A', 'test one step B'],
                   'comment': 'test one comment'},
-         'T304': {'name': 'two', 'outcome': 'Pass',
+         'T304': {'name': 'two', 'outcome': 'Pass', 'duration': 9585.271425,
                   'steps': ['test two step A', 'test two step B'],
                   'comment': 'test two comment'}}
 
@@ -206,7 +207,9 @@ class ZS4JReporter:
 
             results[zs4j_num] = {
                 'name': test_name,
-                'outcome': self._resolve_outcome(test_dict['outcome'])}
+                'outcome': self._resolve_outcome(test_dict['outcome']),
+                'duration': (test_dict['setup']['duration'] + test_dict['call']['duration'] + test_dict['teardown'][
+                    'duration']) * 1000}
 
             # append to comments: crash info
             if 'crash' in test_dict['call']:
@@ -280,7 +283,9 @@ class ZS4JReporter:
                 test_cycle_key=tcycle_key_full,
                 test_case_key=tcase_key_full,
                 execution_status=execution_status,
-                comment=item["comment"])
+                comment=item["comment"],
+                environment_name='Android',
+                execution_time=item['duration'])
             # todo: make create_test_execution_result() return result - need to change API client for this
         print(f'[ZS4J] Report published. Project: {self.project_prefix}. Test cycle key: {self.testcycle_key}')
 
