@@ -10,7 +10,7 @@ from utils.zs4j_reporter_api.zs4j_exceptions import zs4j_configuration_exception
 
 CONFIG = None
 AUTH_HEADER = None
-BASE_URL = "https://api.adaptavist.io/tm4j/v2"
+BASE_URL = "https://api.zephyrscale.smartbear.com/v2"
 
 
 def configure_zs4j_api(api_access_key: str, project_key: str) -> None:

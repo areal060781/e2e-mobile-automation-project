@@ -27,6 +27,8 @@ class ZS4JReporter:
         self.testcycle_description = ''
         self.project_webui_host = None
         self.result_mapping = None
+        self.environment = ''
+        self.version = None
 
     def _param_validation(self):
         if self.result_mapping:
@@ -50,6 +52,8 @@ class ZS4JReporter:
                                'zs4j_testcycle_prefix',
                                'zs4j_testcycle_description',
                                'zs4j_result_mapping',
+                               'zs4j_environment',
+                               'zs4j_version'
                                ]
 
         mandatory_absent = []
@@ -284,7 +288,7 @@ class ZS4JReporter:
                 test_case_key=tcase_key_full,
                 execution_status=execution_status,
                 comment=item["comment"],
-                environment_name='Android',
+                environment_name=self.environment,
                 execution_time=item['duration'])
             # todo: make create_test_execution_result() return result - need to change API client for this
         print(f'[ZS4J] Report published. Project: {self.project_prefix}. Test cycle key: {self.testcycle_key}')
@@ -324,6 +328,8 @@ def pytest_addoption(parser):
 
     result_mapping_desc = 'How to map test result - Pytest vs ZS4J. zs4j-default (default) or pytest.'
     parser.addini('zs4j_result_mapping', result_mapping_desc, default='zs4j-default')
+    parser.addini('zs4j_environment', 'ZS4J existing environment', default='Android')
+    parser.addini('zs4j_version', 'ZS4J existing application version', default='')
 
 
 def pytest_configure(config: Config):
