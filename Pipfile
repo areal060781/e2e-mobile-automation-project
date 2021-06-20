@@ -9,8 +9,8 @@ requests = "*"
 pytest = "*"
 appium-python-client = "*"
 selenium = "*"
-pytest-tm4j-reporter = "*"
 pytest-env = "*"
+pytest-json-report = "*"
 
 [dev-packages]
 
