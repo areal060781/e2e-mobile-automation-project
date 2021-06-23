@@ -19,12 +19,12 @@ Example:
 
 ```ini
 [pytest]
-ZS4J_project_prefix = QT
+ZS4J_project_prefix = SA
 ZS4J_api_key = eyJ0eXAiOiJKV1QiLCJhb
 ZS4J_testcycle_key = R40
 ZS4J_testcycle_prefix = login tests
 ZS4J_testcycle_description = Update v14.43.136 
-ZS4J_project_webui_host = klika-tech.atlassian.net
+ZS4J_project_webui_host = grainchain.atlassian.net
 ```
 
 # Usage

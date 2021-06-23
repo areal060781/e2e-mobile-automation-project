@@ -1,12 +1,12 @@
-## Seed Audit Testing Framework
+# Seed Audit Testing Framework
 
-### Requirements
+## Requirements
 * Python 3.9
 * Pipenv
 * Selenium webdriver
 * Appium
 
-### Installation
+## Installation
 Install dependencies and activate the virtual environment
 From project root, run:
 ```sh
@@ -14,11 +14,16 @@ pipenv install --dev
 pipenv shell
 ```
 
-### Executing testcases
+## Configuration
+Adjust the valuies in data.py, 
+
+## Executing testcases
 From project root, run:
 
 ```sh
 pytest
+pytest file.py::Class::test_case
+pytest tests/test_name.py -s -v
 ```
 
 ### Executing testcases and publish results with ZS4J
@@ -47,3 +52,21 @@ curl -H "Authorization: Bearer ${TOKEN}" -F "file=@TestSuites.xml;type=applicati
 
 Note the query parameters on the URL. The projectKey specifies what project will be used to create the test cycle. The autoCreateTestCase will create a test case using the pytest test method name when no matching test case is found.
 
+
+## Planned project structure
+```
+seedaudit-testing-fw/
+├── conf/                         # Configuration files
+├── output/                       # Testing execution results
+|   ├── logs/
+|   ├── reports/
+|   └── screenshoots/
+├── pageobjects/                  # Page Object Model classes
+├── tests/                        # Test cases
+|   ├── fixtures/
+|   └── test_login.py
+└── utils/                        # Libraries for common use
+    ├── pytest_zs4j_reporter/
+    └── zs4j_reporter_api/
+
+```
