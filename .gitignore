@@ -1,7 +1,11 @@
 .idea
 .pytest_cache
+__pycache__
+*/__pycache__
+*/*/__pycache__
+*/*/*/__pycache__
+*.json
+*.log
+*.xml
 results
-conf/__pycache__
-pages/__pycache__
-tests/__pycache__
-.report.json
+output

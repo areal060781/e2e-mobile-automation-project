@@ -1,3 +1,3 @@
-email = 'areal-100321@grainchain.dev'
+email = 'areal110621@grainchain.dev'
 password = 'Test@123'
-auditor_name = 'Carolina'
+auditor_name = 'Guadalupe'
