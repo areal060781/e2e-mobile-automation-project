@@ -55,7 +55,7 @@ Note the query parameters on the URL. The projectKey specifies what project will
 
 ## Planned project structure
 ```
-seedaudit-testing-fw/
+automation-project/
 ├── conf/                         # Configuration files
 ├── output/                       # Testing execution results
 |   ├── logs/
