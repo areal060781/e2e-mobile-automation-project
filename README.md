@@ -1,4 +1,4 @@
-# Seed Audit Testing Framework
+# E2E Automation testing project
 
 ## Requirements
 * Python 3.9
