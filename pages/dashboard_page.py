@@ -3,6 +3,7 @@ from conf.locators import DashboardPageLocators
 
 
 class DashboardPage(BasePage):
+    """Dashboard page action methods come here"""
 
     def validate_welcome_message(self, name):
         auditor_name_text = self.driver.find_element(*DashboardPageLocators.AUDITOR_NAME_TEXT)
